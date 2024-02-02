@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion de temperaturas</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <button onclick="solicitarTemperatura()">Presiona para convertir Temperatura</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function solicitarTemperatura() {
+            let celsius;
+
+            do {
+                // Solicitar temperatura en grados Celsius y convertir a número
+                let inputCelsius = prompt("Ingrese grados Celsius:");
+                celsius = parseFloat(inputCelsius);
+
+                // Verificar si la entrada es un número
+                if (isNaN(celsius)) {
+                    alert("Por favor, ingrese un valor numérico.");
+                }
+            } while (isNaN(celsius));
+
+            // Realizar conversiones
+            const fahrenheit = (celsius * 9/5) + 32;
+            const kelvin = celsius + 273.15;
+
+            //mostrar DOM
+            const resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerHTML = `
+                Temperatura en grados Fahrenheit: ${fahrenheit.toFixed(2)}<br>
+                Temperatura en Kelvin: ${kelvin.toFixed(2)}
+            `;
+        }
+    </script>
+    
+</body>
+</html>
